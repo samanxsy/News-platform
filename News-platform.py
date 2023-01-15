@@ -7,12 +7,9 @@ available_countries = ['ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn
 newsAPI_Key = os.environ.get('newsAPI_Key')
 
 #  #  #  Entrance
-def entry():
-  print("\nWelcome to the most time-efficient news platform!")
-  time.sleep(0.5)
-  print()
-
-entry()
+print("\nWelcome to the most time-efficient news platform!")
+time.sleep(0.5)
+print()
 
 #  #  #  Getting & Checking country code
 def start():
