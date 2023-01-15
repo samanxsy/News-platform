@@ -5,5 +5,8 @@ You will provide a list of interests, and as the result you will only see what y
 
 No suggestions, no offers, no wasting time.
 
-p.s: 
-  - This is a simple program built as my first project.
+More info: 
+
+  - This is a simple program built as my first project
+  - I used News API "Top business headlines" as the source. [ https://newsapi.org/ ]
+
