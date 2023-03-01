@@ -3,11 +3,15 @@ body{
     font-family: 'Roboto', sans-serif;
     color: rgb(0, 0, 0);
 }
+
+h2{
+    margin-left: 10px;
+}
+
 .searchbar{
-    width: 30%;
+    width: 280px;
     height: 30px;
     border-radius: 5px;
-    margin-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
     display: flex;
@@ -15,3 +19,47 @@ body{
     align-items: center;
 }
 
+.searchbar-container{
+    display: inline;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    max-width: 330px;
+    min-width: 300px;
+}
+
+.articles-container{
+    margin-top: 20px;
+    margin-left: 10px;
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.available-countries{
+    display: inline;
+    text-align: end;
+    vertical-align: top;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.countries{
+    padding-left: 10px;
+    margin-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.countries-text{
+    display: inline;
+    font-size: 15px;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+form{
+    display: inline-block;
+    width: 50%;
+}
