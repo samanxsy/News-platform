@@ -8,7 +8,6 @@ available_countries = ['ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn
 newsAPI_KEY = os.environ.get('newsAPI_KEY')
 
 
-#  #  #  Creating the interest list
 def news(user_interests, country):
     """This will add the user's interests to the interests list"""
     interests = [user_interests.lower()]
