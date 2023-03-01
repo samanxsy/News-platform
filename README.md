@@ -4,7 +4,7 @@ A simple program using NewsAPI and filtering the business news based on user int
 
 ## Getting started
 
-Following instructions will get you a copy of the project up and running on your local machine. 
+The application is currently being updated. . .
 
 #### Prerequisites:
 
@@ -25,10 +25,11 @@ Following instructions will get you a copy of the project up and running on your
 You will be prompet to enter your country code, and then to add the 'key words' for your interests. You can add as much as you want by pressing enter each time and finish by enterin [Done]. 
 It will get the business headlines for the country code you provided from NewsAPI, and will filter the news based on the interests you added. 
 
-#### Built With:
+#### Building With:
 
 - Python - Programming Language
 - NewsAPI - News API [https://newsapi.org/]
+- Flask
 
 #### Author
 - Samanxsy
