@@ -8,9 +8,9 @@ available_countries = ['ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn
 newsAPI_KEY = os.environ.get('newsAPI_KEY')
 
 
-def news(*user_interests, country):
+def news(user_interests, country):
     """This will add the user's interests to the interests list"""
-    interests = [*user_interests.lower()]
+    interests = [user_interests.lower()]
 
 #  #  #  API Communication
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=business&apiKey={newsAPI_KEY}"
