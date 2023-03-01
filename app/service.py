@@ -5,7 +5,7 @@ import datetime
 
 Today = datetime.datetime.now()
 available_countries = ['ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn', 'co', 'cu', 'cz', 'de', 'eg', 'fr', 'gb', 'gr', 'hk', 'hu', 'id', 'ie', 'il', 'in', 'it', 'jp', 'kr', 'lt', 'lv', 'ma', 'mx', 'my', 'ng', 'nl', 'no', 'nz', 'ph', 'pl', 'pt', 'ro', 'rs', 'ru', 'sa', 'se', 'sg', 'si', 'sk' 'th', 'tr', 'tw', 'ua', 'us', 've', 'za']
-newsAPI_Key = os.environ.get('newsAPI_KEY')
+newsAPI_KEY = os.environ.get('newsAPI_KEY')
 
 #  #  #  Creating the interest list
 def news(user_interests, country):
@@ -13,7 +13,7 @@ def news(user_interests, country):
     interests = [user_interests.lower()]
 
 #  #  #  API Communication
-    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=business&apiKey={newsAPI_Key}"
+    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=business&apiKey={newsAPI_KEY}"
     data = requests.get(url)
     result = data.json()
 

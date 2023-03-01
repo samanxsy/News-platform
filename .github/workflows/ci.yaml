@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     container: python:3.10-alpine
 
+    env:
+      newsAPI_KEY: ${{ secrets.newsAPI_KEY }}
+
     services:
       postgres:
         image: postgres:alpine
@@ -35,7 +38,13 @@ jobs:
           python -m pip install -r requirements.txt
 
       - name: Run unit tests with pytest
-        run: pytest
+        run: |
+          export newsAPI_KEY=$newsAPI_KEY
+          pytest
 
       - name: Lint with flake8
         run: flake8 --filename=*.py app/
+
+        env:
+          DATABASE_URI: "postgresql://postgres:pgs3cr3t@postgres:5432/testdb"
+          newsAPI_KEY: ${{ secrets.newsAPI_KEY }}
