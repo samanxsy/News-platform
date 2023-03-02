@@ -28,6 +28,16 @@ h2{
     min-width: 300px;
 }
 
+.search-button{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    height: 35px;
+    width: 50px;
+    margin-right: 90px;
+    font-weight: 400;
+}
+
 .articles-container{
     margin-top: 20px;
     margin-left: 10px;
@@ -61,5 +71,5 @@ h2{
 
 form{
     display: inline-block;
-    width: 50%;
+    width: 310px;
 }

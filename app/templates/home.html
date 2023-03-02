@@ -11,15 +11,16 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <h2>Read what matters.</h2>
         <div class="searchbar-container">
-            <form action="/search" method="GET">
-                <input type="text" class="searchbar" name="search" id="search" placeholder="Search...">
+            <form action="/news" method="GET">
+                <input type="text" name="interest" class="searchbar" placeholder="Search...">
         </div>
+        <button type="submit" class="search-button">Go</button>
         <div class="available-countries">
             <p class="countries-text">Select a country :</p>
             <select class="countries" name="country">
@@ -80,27 +81,12 @@
             </select>
         </div>
     </form>
-
-            <div class="articles-container">
-                {% if articles %}
-                    {% for article in articles %}
-                        <div class="article">
-                            <div class="article-content">
-                                <h3>{{ article.title }}</h3>
-                                {% if article.description %}
-                                    <p>{{ article.description }}</p>
-                                {% endif %}
-                                {% if article.source %}
-                                    <p>{{ article.source }}</p>
-                                {% endif %}
-                                <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p>Start by searching for topics!</p>
-                {% endif %}
-            </div>
-
+    <div class="articles-container">
+    {% for news in articles %}
+        <h3>{{ news['title'] }}</h3>
+        <p>{{ news['author'] }}</p>
+        <a href="{{ news['url'] }}">{{ news['url'] }}</a>
+    {% endfor %}
+    </div>
     </body>
 </html>
