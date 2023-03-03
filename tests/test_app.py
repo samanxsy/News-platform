@@ -14,16 +14,22 @@ class BaseTest(unittest.TestCase):
 
 class TestRoutes(BaseTest):
     """Test the routes"""
-
     def test_home(self):
         with self.app.test_client() as c:
             response = c.get('/')
-            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
     def test_news(self):
+        """This function country in the query strings and expects a 200 response and business news related to the country"""
         with self.app.test_client() as c:
             response = c.get('/news?interest=&country=us')
-            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
             self.assertIsNotNone(response.data)
 
+
+    def test_no_news_available(self):
+        """This function country in the query strings and expects a 200 response and business news related to the country"""
+        with self.app.test_client() as c:
+            response = c.get('/news?interest=i1h2uhsaisd&country=us')
+            self.assertEqual(response.status_code, status.HTTP_200_OK)

@@ -16,6 +16,7 @@
 
     <body>
         <h2>Read what matters.</h2>
+    <div class="header">
         <div class="searchbar-container">
             <form action="/news" method="GET">
                 <input type="text" name="interest" class="searchbar" placeholder="Search...">
@@ -80,13 +81,31 @@
                 <option value="za">South Africa</option>
             </select>
         </div>
+    </div>
     </form>
-    <div class="articles-container">
-    {% for news in articles %}
-        <h3>{{ news['title'] }}</h3>
-        <p>{{ news['author'] }}</p>
-        <a href="{{ news['url'] }}">{{ news['url'] }}</a>
-    {% endfor %}
+
+    <h4>News for you</h4>
+    <div class="selected-articles-container">
+
+        {% for word in keyword %}
+            {% if word in interest_list %}
+                <p class="authors">{{ news['author'] }}</p>
+                <h3>{{ news['title'] }}</h3>
+                <a class="links" href="{{ news['url'] }}">Read More</a>
+                <p class="space"></p>
+            {% endif %}
+        {% endfor %}
+        </div>
+
+
+        <h4>What else happening</h4>
+        <div class="articles-container">
+        {% for news in articles %}
+            <p class="authors">{{ news['author'] }}</p>
+            <h3>{{ news['title'] }}</h3>
+            <a class="links" href="{{ news['url'] }}">Read More</a>
+            <p class="space"></p>
+        {% endfor %}
     </div>
     </body>
 </html>
