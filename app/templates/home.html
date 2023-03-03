@@ -6,7 +6,6 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <title>Top Business News</title>
 
-        <link rel="stylesheet" href="/app/static/styles.css">
         <link rel="stylesheet" href="/static/styles.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,27 +84,14 @@
     </form>
 
     <h4>News for you</h4>
-    <div class="selected-articles-container">
-
-        {% for word in keyword %}
-            {% if word in interest_list %}
-                <p class="authors">{{ news['author'] }}</p>
-                <h3>{{ news['title'] }}</h3>
-                <a class="links" href="{{ news['url'] }}">Read More</a>
-                <p class="space"></p>
-            {% endif %}
-        {% endfor %}
+        <div class="selected-articles-container">
+            {% include 'selected_articles.html.j2' %}
         </div>
 
-
-        <h4>What else happening</h4>
+    <h4>What else happening</h4>
         <div class="articles-container">
-        {% for news in articles %}
-            <p class="authors">{{ news['author'] }}</p>
-            <h3>{{ news['title'] }}</h3>
-            <a class="links" href="{{ news['url'] }}">Read More</a>
-            <p class="space"></p>
-        {% endfor %}
-    </div>
+            {% include 'general_articles.html.j2' %}
+        </div>
+
     </body>
 </html>

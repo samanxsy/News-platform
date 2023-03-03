@@ -4,7 +4,11 @@ from flask import Flask, render_template, request
 
 
 app = Flask("Your o News", static_folder='./app/static', template_folder='./app/templates')
+
 newsAPI_KEY = os.environ.get('newsAPI_KEY')
+
+app.config['SECRET_KEY'] = os.environ.get('SESSION_KEY')
+
 interest_list = []
 
 
@@ -27,10 +31,7 @@ def news():
     result = data.json()
     articles = result['articles']
 
-    for news in articles:
-        keyword = news['title'].lower().split()
-
-        return render_template("home.html", articles=articles, keyword=keyword, interest_list=interest_list, news=news)
+    return render_template("home.html", articles=articles, interest_list=interest_list)
 
 
 if __name__ == "__main__":
