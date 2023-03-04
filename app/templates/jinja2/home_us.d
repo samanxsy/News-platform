@@ -1,6 +1,6 @@
-{% for news in articles %}
+{% for news in articles_us %}
     <p class="authors">{{ news['author'] }}</p>
     <h3>{{ news['title'] }}</h3>
-    <a class="links" href="{{ news['url'] }}">Read More</a>
+    <a class="links" href="{{ news['url'] }}">Read more on {{ news['author'] }}</a>
     <p class="space"></p>
 {% endfor %}
