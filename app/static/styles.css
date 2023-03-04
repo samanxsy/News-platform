@@ -96,6 +96,20 @@ h4{
     word-wrap: break-word;
 }
 
+.h-articles-container{
+    border-top: solid black 1px;
+    padding-top: 10px;
+    margin-left: 10px;
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+    height: 300px;
+    width: auto;
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
+
 .available-countries{
     display: inline;
     text-align: end;

@@ -84,17 +84,14 @@
     </form>
 
     {% include 'jinja2/session.d' %}
-    <h4>What's happening in United States</h4>
-        <div class="h-articles-container">
-            {% include 'jinja2/home_us.d' %}
+    <h4>News for you</h4>
+        <div class="selected-articles-container">
+            {% include 'jinja2/selected_articles.d' %}
         </div>
-        <h4>What's happening in United Kingdom</h4>
-        <div class="h-articles-container">
-            {% include 'jinja2/home_gb.d' %}
-        </div>
-        <h4>What's happening in Hungary</h4>
-        <div class="h-articles-container">
-            {% include 'jinja2/home_hu.d' %}
+
+    <h4>See more from {{ session['country'] }}</h4>
+        <div class="articles-container">
+            {% include 'jinja2/general_articles.d' %}
         </div>
 
     </body>
