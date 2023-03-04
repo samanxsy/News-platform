@@ -15,14 +15,17 @@
 
     <body>
         <h2>Read what matters.</h2>
-    <div class="header">
-        <div class="searchbar-container">
-            <form action="/news" method="GET">
-                <input type="text" name="interest" class="searchbar" placeholder="Search...">
-        </div>
-        <button type="submit" class="search-button">Go</button>
+        <div class="header">
+            <div class="searchbar-container">
+                <form action="/search" method="GET">
+                    <input type="text" name="search" class="searchbar" placeholder="Search...">
+            </div>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        <p class="countries-text">Select a country :</p>
+        <form action="/business/countries"
+        method="GET">
         <div class="available-countries">
-            <p class="countries-text">Select a country :</p>
             <select class="countries" name="country">
                 <option value="ar">Argentina</option>
                 <option value="at">Austria</option>
@@ -80,19 +83,27 @@
                 <option value="za">South Africa</option>
             </select>
         </div>
-    </div>
+        <button type="submit" class="country-button">Go</button>
     </form>
+    </div>
 
+
+</div>
+<div class="news-container">
     {% include 'jinja2/session.d' %}
-    <h4>News for you</h4>
-        <div class="selected-articles-container">
-            {% include 'jinja2/selected_articles.d' %}
+    <h4>What's happening in United States</h4>
+        <div class="h-articles-container">
+            {% include 'jinja2/home_us.d' %}
         </div>
-
-    <h4>See more from {{ session['country'] }}</h4>
-        <div class="articles-container">
-            {% include 'jinja2/general_articles.d' %}
+        <h4>What's happening in United Kingdom</h4>
+        <div class="h-articles-container">
+            {% include 'jinja2/home_gb.d' %}
         </div>
+        <h4>What's happening in Hungary</h4>
+        <div class="h-articles-container">
+            {% include 'jinja2/home_hu.d' %}
+        </div>
+</div>
 
     </body>
 </html>
