@@ -63,6 +63,7 @@ def health_countries():
 
     return render_template("countries.html", articles=articles)
 
+
 @app.route('/technology', methods=["GET"])
 def technology():
     """This function will return top technology headlines"""
@@ -172,6 +173,10 @@ def entertainment():
 @app.route('/entertainment/countries', methods=["GET"])
 def entertainment_countries():
     """This function will return top entertainment headlines from the country user selected"""
+    country = request.args.get('country')
+    if country:
+        session['country'] = country
+
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=entertainment&apiKey={newsAPI_KEY}"
     data = requests.get(url)
     result = data.json()
