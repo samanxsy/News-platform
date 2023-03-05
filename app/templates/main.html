@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <title>YourO News</title>
+
+        <link rel="stylesheet" href="/app/static/styles.css">
+        <link rel="stylesheet" href="/app/static/texts.css">
+        <link rel="stylesheet" href="/app/static/header.css">
+        <link rel="stylesheet" href="/app/static/buttons.css">
+
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="stylesheet" href="/static/texts.css">
+        <link rel="stylesheet" href="/static/header.css">
+        <link rel="stylesheet" href="/static/buttons.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+    <div class ="header">
+        <h2>YourO News</h2>
+        <div class="search-section">
+            <div class="searchbar-container">
+                <form action="/search" method="GET">
+                    <input type="text" name="search" class="searchbar" placeholder="Search...">
+                    </div>
+                <button type="submit" class="search-button">Go</button>
+            </form>
+        </div>
+
+            <div class="categories-bar">
+                <div class="categories-container">
+                <button type="button" class="categories-button" onClick="location.href='/health'" >Health</button>
+                <button type="button" class="categories-button" onClick="location.href='/technology'" >Technology</button>
+                <button type="button" class="categories-button" onClick="location.href='/business'">Business</button>
+                <button type="button" class="categories-button" onClick="location.href='/science'" >Science</button>
+                <button type="button" class="categories-button" onClick="location.href='/entertainment'" >Entertainment</button>
+                <button type="button" class="categories-button" onClick="location.href='/sports'" >Sports</button>
+                <button type="button" class="categories-button" onClick="location.href='/general'" >General</button>
+                </div>
+
+                <form action="/business/countries"
+                method="GET">
+                <div class="available-countries">
+                    <select class="countries" name="country">
+                        <option value="ar">Argentina</option>
+                        <option value="at">Austria</option>
+                        <option value="au">Australia</option>
+                        <option value="be">Belgium</option>
+                        <option value="bg">Bulgaria</option>
+                        <option value="br">Brazil</option>
+                        <option value="ca">Canada</option>
+                        <option value="cn">China</option>
+                        <option value="co">Colombia</option>
+                        <option value="cu">Cuba</option>
+                        <option value="cz">Czechia</option>
+                        <option value="de">Germany</option>
+                        <option value="eg">Egypt</option>
+                        <option value="fr">France</option>
+                        <option value="gb">United Kingdom</option>
+                        <option value="gr">Greece</option>
+                        <option value="hk">Hong Kong</option>
+                        <option value="hu">Hungary</option>
+                        <option value="id">Indonesia</option>
+                        <option value="ie">Ireland</option>
+                        <option value="il">Israel</option>
+                        <option value="in">India</option>
+                        <option value="it">Italy</option>
+                        <option value="jp">Japan</option>
+                        <option value="kr">South Korea</option>
+                        <option value="lt">Lithuania</option>
+                        <option value="lv">Latvia</option>
+                        <option value="ma">Morocco</option>
+                        <option value="mx">Mexico</option>
+                        <option value="my">Malaysia</option>
+                        <option value="ng">Nigeria</option>
+                        <option value="nl">Netherlands</option>
+                        <option value="no">Norway</option>
+                        <option value="nz">New Zealand</option>
+                        <option value="ph">Philippines</option>
+                        <option value="pl">Poland</option>
+                        <option value="pt">Portugal</option>
+                        <option value="ro">Romania</option>
+                        <option value="rs">Serbia</option>
+                        <option value="ru">Russia</option>
+                        <option value="sa">Saudi Arabia</option>
+                        <option value="se">Sweden</option>
+                        <option value="sg">Singapore</option>
+                        <option value="si">Slovenia</option>
+                        <option value="sk">Slovakia</option>
+                        <option value="ch">Switzerland</option>
+                        <option value="th">Thailand</option>
+                        <option value="tr">Turkey</option>
+                        <option value="tw">Taiwan</option>
+                        <option value="ua">Ukraine</option>
+                        <option value="ae">United Arab Emirates</option>
+                        <option value="us">United States</option>
+                        <option value="ve">Venezuela</option>
+                        <option value="za">South Africa</option>
+                    </select>
+                    <button type="submit" class="country-button">Go</button>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="news-container">
+            {% include 'jinja2/session.d' %}
+            {% include 'jinja2/get_articles.d' %}
+        </div>
+    </body>
+</html>

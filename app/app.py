@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request
 
 
 app = Flask("YourO News", static_folder='./app/static', template_folder='./app/templates')
@@ -20,10 +20,10 @@ def home():
     result = data.json()
     articles = result['articles']
 
-    return render_template("home.html", articles=articles)
+    return render_template("main.html", articles=articles)
 
 
-@app.route("/search", methods=["GET"])
+@app.route("/search")
 def search():
     """This function will return the content user searched for"""
     search = request.args.get('search')
@@ -35,10 +35,10 @@ def search():
     result = data.json()
     articles = result['articles']
 
-    return render_template("home.html", articles=articles)
+    return render_template("main.html", articles=articles)
 
 
-@app.route("/health", methods=["GET"])
+@app.route("/health")
 def health():
     """This function will return top health headlines"""
     url = f"https://newsapi.org/v2/top-headlines?country=&category=health&apiKey={newsAPI_KEY}"
@@ -46,22 +46,7 @@ def health():
     result = data.json()
     articles = result['articles']
 
-    return render_template("home.html", articles=articles)
-
-
-@app.route('/health/countries', methods=["GET"])
-def health_countries():
-    """This function will return top health headlines from the country user selected"""
-    country = request.args.get('country')
-    if country:
-        session['country'] = country
-
-    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=health&apiKey={newsAPI_KEY}"
-    data = requests.get(url)
-    result = data.json()
-    articles = result['articles']
-
-    return render_template("countries.html", articles=articles)
+    return render_template("main.html", articles=articles)
 
 
 @app.route('/technology', methods=["GET"])
@@ -72,25 +57,10 @@ def technology():
     result = data.json()
     articles = result['articles']
 
-    return render_template("home.html", articles=articles)
+    return render_template("main.html", articles=articles)
 
 
-@app.route('/technology/countries', methods=["GET"])
-def technology_countries():
-    """This function will return top technology headlines from the country user selected"""
-    country = request.args.get('country')
-    if country:
-        session['country'] = country
-
-    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=technology&apiKey={newsAPI_KEY}"
-    data = requests.get(url)
-    result = data.json()
-    articles = result['articles']
-
-    return render_template("countries.html", articles=articles)
-
-
-@app.route("/business", methods=["GET"])
+@app.route("/business")
 def business():
     """
     This function will return top business headlines from US, UK and Hungary
@@ -113,27 +83,10 @@ def business():
     result_hu = data_hu.json()
     articles_hu = result_hu['articles']
 
-    return render_template("business.html", articles_us=articles_us, articles_uk=articles_uk, articles_hu=articles_hu)
+    return render_template("main.html", articles_us=articles_us, articles_uk=articles_uk, articles_hu=articles_hu)
 
 
-@app.route("/business/countries", methods=["GET"])
-def business_countries():
-    """
-    This function takes in an interest and a country and returns the top 5 news articles related to the interest in the country
-    """
-    country = request.args.get('country')
-    if country:
-        session['country'] = country
-
-    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=business&apiKey={newsAPI_KEY}"
-    data = requests.get(url)
-    result = data.json()
-    articles = result['articles']
-
-    return render_template("countries.html", articles=articles)
-
-
-@app.route("/science", methods=["GET"])
+@app.route("/science")
 def science():
     """This function will return top science headlines"""
     url = f"https://newsapi.org/v2/top-headlines?country=&category=science&apiKey={newsAPI_KEY}"
@@ -141,25 +94,10 @@ def science():
     result = data.json()
     articles = result['articles']
 
-    return render_template("home.html", articles=articles)
+    return render_template("main.html", articles=articles)
 
 
-@app.route('/science/countries', methods=["GET"])
-def sciene_countries():
-    """This function will return top science headlines from the country user selected"""
-    country = request.args.get('country')
-    if country:
-        session['country'] = country
-
-    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=science&apiKey={newsAPI_KEY}"
-    data = requests.get(url)
-    result = data.json()
-    articles = result['articles']
-
-    return render_template("countries.html", articles=articles)
-
-
-@app.route("/entertainment", methods=["GET"])
+@app.route("/entertainment")
 def entertainment():
     """This function will return top entertainment headlines"""
     url = f"https://newsapi.org/v2/top-headlines?country=&category=entertainment&apiKey={newsAPI_KEY}"
@@ -167,25 +105,10 @@ def entertainment():
     result = data.json()
     articles = result['articles']
 
-    return render_template("home.html", articles=articles)
+    return render_template("main.html", articles=articles)
 
 
-@app.route('/entertainment/countries', methods=["GET"])
-def entertainment_countries():
-    """This function will return top entertainment headlines from the country user selected"""
-    country = request.args.get('country')
-    if country:
-        session['country'] = country
-
-    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=entertainment&apiKey={newsAPI_KEY}"
-    data = requests.get(url)
-    result = data.json()
-    articles = result['articles']
-
-    return render_template("countries.html", articles=articles)
-
-
-@app.route("/sports", methods=["GET"])
+@app.route("/sports")
 def sports():
     """This function will return top sports headlines"""
     url = f"https://newsapi.org/v2/top-headlines?country=&category=sports&apiKey={newsAPI_KEY}"
@@ -193,25 +116,10 @@ def sports():
     result = data.json()
     articles = result['articles']
 
-    return render_template("home.html", articles=articles)
+    return render_template("main.html", articles=articles)
 
 
-@app.route('/sports/countries', methods=["GET"])
-def sports_countries():
-    """This function will return top sports headlines from the country user selected"""
-    country = request.args.get('country')
-    if country:
-        session['country'] = country
-
-    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=sports&apiKey={newsAPI_KEY}"
-    data = requests.get(url)
-    result = data.json()
-    articles = result['articles']
-
-    return render_template("countries.html", articles=articles)
-
-
-@app.route('/general', methods=["GET"])
+@app.route('/general')
 def general():
     """This function will return top general headlines"""
     url = f"https://newsapi.org/v2/top-headlines?country=&category=general&apiKey={newsAPI_KEY}"
@@ -219,22 +127,7 @@ def general():
     result = data.json()
     articles = result['articles']
 
-    return render_template("home.html", articles=articles)
-
-
-@app.route('/general/countries', methods=["GET"])
-def general_countries():
-    """This function will return top general headlines from the country user selected"""
-    country = request.args.get('country')
-    if country:
-        session['country'] = country
-
-    url = f"https://newsapi.org/v2/top-headlines?country={country}&category=general&apiKey={newsAPI_KEY}"
-    data = requests.get(url)
-    result = data.json()
-    articles = result['articles']
-
-    return render_template("countries.html", articles=articles)
+    return render_template("main.html", articles=articles)
 
 
 if __name__ == "__main__":

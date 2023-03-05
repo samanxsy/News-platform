@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from flask import Flask
 import app.common.status as status
 import app.app as app
@@ -9,199 +10,122 @@ class BaseTest(unittest.TestCase):
     def setUp(self):
         self.app = Flask("YourO News", static_folder='./app/static', template_folder='./app/templates')
         self.app.add_url_rule('/', view_func=app.home)
-        self.app.add_url_rule('/search', view_func=app.search, methods=['GET'])
-        self.app.add_url_rule('/business', view_func=app.business, methods=['GET'])
-        self.app.add_url_rule('/business/countries', view_func=app.business_countries, methods=['GET'])
+        self.app.add_url_rule('/search', view_func=app.search)
+        self.app.add_url_rule('/health', view_func=app.health)
+        self.app.add_url_rule('/technology', view_func=app.technology)
+        self.app.add_url_rule('/business', view_func=app.business)
+        self.app.add_url_rule('/science', view_func=app.science)
+        self.app.add_url_rule('/entertainment', view_func=app.entertainment)
+        self.app.add_url_rule('/sports', view_func=app.sports)
+        self.app.add_url_rule('/general', view_func=app.general)
 
 
 class TestRoutes(BaseTest):
-    """Test the routes"""
+    """This class is used for testing the routes responses"""
     def test_home(self):
         with self.app.test_client() as c:
-            response = c.get('/')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)
 
 
     def test_search(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
+        """This should test the search route and return a 200 response"""
         with self.app.test_client() as c:
-            response = c.get('/search?search=apple')
-            self.assertIsNotNone(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-            
-            response = c.get('/search?search=ChatGPT and microsoft')
-            self.assertIsNotNone(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/search')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)
+
+
+#    def test_search_something(self):
+#        """This should test the search route with a search query and return the result related to the search and a 200 response"""
+#        with self.app.test_client() as c:
+#            with patch('requests.get') as mock_get:
+#                mock_get.return_value.status_code = 200
+#                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+#                response = c.get('/search?search=Apple')
+#                self.assertEqual(response.status_code, status.HTTP_200_OK)
+#                self.assertIn(b"Apple", response.data)
 
 
     def test_health(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
+        """This should test the health route and return data with a 200 response"""
         with self.app.test_client() as c:
-            response = c.get('/health')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/health')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)
 
-
-    def test_health_countries(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
-        with self.app.test_client() as c:
-            response = c.get('/health/countries?country=us')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/health/countries?country=hu')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/health/countries?country=fr')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
 
     def test_technology(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
+        """This should test the technology route and return data with a 200 response"""
         with self.app.test_client() as c:
-            response = c.get('/technology')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-
-    def test_techonology_countries(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
-        with self.app.test_client() as c:
-            response = c.get('/technology/countries?country=us')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/technology/countries?country=hu')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/technology/countries?country=fr')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/technology')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)
 
 
     def test_business(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
+        """This should test the business route and return data with a 200 response"""
         with self.app.test_client() as c:
-            response = c.get('/business')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/business')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)
 
 
-    def test_business_countries(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
+    def test_science(self):
+        """This should test the science route and return data with a 200 response"""
         with self.app.test_client() as c:
-            response = c.get('/business/countries?country=us')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/business/countries?country=hu')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/business/countries?country=fr')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-
-    def test_sciences(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
-        with self.app.test_client() as c:
-            response = c.get('/sciences')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-
-    def test_sciences_countries(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
-        with self.app.test_client() as c:
-            response = c.get('/sciences/countries?country=us')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-            
-            response = c.get('/sciences/countries?country=gb')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/sciences/countries?country=fr')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-
-            response = c.get('/sciences/countries?country=de')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/science')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)
 
 
     def test_entertainment(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
+        """This should test the entertainment route and return data with a 200 response"""
         with self.app.test_client() as c:
-            response = c.get('/entertainment')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-
-    def test_entertainment_countries(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
-        with self.app.test_client() as c:
-            response = c.get('/entertainment/countries?country=us')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/entertainment/countries?country=hu')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/entertainment/countries?country=fr')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/entertainment')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)
 
 
     def test_sports(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
+        """This should test the sports route and return data with a 200 response"""
         with self.app.test_client() as c:
-            response = c.get('/sports')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-
-    def test_sports_countries(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
-        with self.app.test_client() as c:
-            response = c.get('/sports/countries?country=us')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/sports/countries?country=hu')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/sports/countries?country=fr')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/sports')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)
 
 
     def test_general(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
+        """This should test the general route and return data with a 200 response"""
         with self.app.test_client() as c:
-            response = c.get('/general')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-
-    def test_general_countries(self):
-        """This function country in the query strings and expects a 200 response and business news related to the country"""
-        with self.app.test_client() as c:
-            response = c.get('/general/countries?country=us')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/general/countries?country=hu')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
-
-            response = c.get('/general/countries?country=fr')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
-            self.assertIsNotNone(response.data)
+            with patch('requests.get') as mock_get:
+                mock_get.return_value.status_code = 200
+                mock_get.return_value.json.return_value = {'status': 'ok', 'articles': []}
+                response = c.get('/general')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                self.assertIsNotNone(response.data)

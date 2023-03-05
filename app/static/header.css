@@ -1,0 +1,67 @@
+.header{
+    margin-bottom: 10px;
+    margin-left: 300px;
+    min-width: 980px;
+}
+
+.search-section{
+    margin-right: 0;
+}
+
+.categories-bar{
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.categories-container{
+    display: inline;
+    margin-right: 30px;
+}
+
+.available-countries{
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.countries{
+    padding-left: 10px;
+    margin-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 5px;
+    border: solid black 1px;
+    display: inline;
+}
+
+.small-text{
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.searchbar{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchbar-container{
+    display: inline;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 330px;
+    min-width: 300px;
+}
