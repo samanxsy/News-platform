@@ -4,25 +4,24 @@ body{
     color: rgb(0, 0, 0);
 }
 
-.half-articles-container{
+.top-headlines{
     border-top: solid black 1px;
     padding-top: 10px;
-    margin-left: 10px;
-    display: block;
+    display: inline-block;
     flex-direction: row;
     flex-wrap: wrap;
     text-align: left;
     height: 300px;
     width: auto;
+    min-width: 980px;
     overflow-y: scroll;
     word-wrap: break-word;
 }
 
 .news-container{
-    border-top: solid black 1px;
     border-bottom: solid black 1px;
     padding-top: 10px;
-    margin-left: 300px;
+    margin-left: 20px;
     min-width: 980px;
     display: inline-block;
     flex-direction: row;

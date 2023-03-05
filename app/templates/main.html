@@ -22,28 +22,11 @@
 
     <body>
     <div class ="header">
-        <h2>YourO News</h2>
-        <div class="search-section">
-            <div class="searchbar-container">
-                <form action="/search" method="GET">
-                    <input type="text" name="search" class="searchbar" placeholder="Search...">
-                    </div>
-                <button type="submit" class="search-button">Go</button>
-            </form>
+        <h2 class="title">YourO News.</h2>
+        <div class="today-date">
+            <h4 class="date">{{ date }}</h4>
         </div>
-
-            <div class="categories-bar">
-                <div class="categories-container">
-                <button type="button" class="categories-button" onClick="location.href='/health'" >Health</button>
-                <button type="button" class="categories-button" onClick="location.href='/technology'" >Technology</button>
-                <button type="button" class="categories-button" onClick="location.href='/business'">Business</button>
-                <button type="button" class="categories-button" onClick="location.href='/science'" >Science</button>
-                <button type="button" class="categories-button" onClick="location.href='/entertainment'" >Entertainment</button>
-                <button type="button" class="categories-button" onClick="location.href='/sports'" >Sports</button>
-                <button type="button" class="categories-button" onClick="location.href='/general'" >General</button>
-                </div>
-
-                <form action="/business/countries"
+        <form action="/business/countries"
                 method="GET">
                 <div class="available-countries">
                     <select class="countries" name="country">
@@ -105,11 +88,40 @@
                     <button type="submit" class="country-button">Go</button>
                 </form>
             </div>
+
+        <div class="search-section">
+            <div class="searchbar-container">
+                <form action="/search" method="GET">
+                    <input type="text" name="search" class="searchbar" placeholder="Search for anything...">
+                    </div>
+                <button type="submit" class="search-button">Go</button>
+            </form>
         </div>
-    </div>
+
+            <h4 class="explore-headlines">Explore Topics</h4>
+            <div class="categories-bar">
+                <div class="categories-container">
+                <button type="button" class="categories-button" onClick="location.href='/health'" >Health</button>
+                <button type="button" class="categories-button" onClick="location.href='/technology'" >Technology</button>
+                <button type="button" class="categories-button" onClick="location.href='/business'">Business</button>
+                <button type="button" class="categories-button" onClick="location.href='/science'" >Science</button>
+                <button type="button" class="categories-button" onClick="location.href='/entertainment'" >Entertainment</button>
+                <button type="button" class="categories-button" onClick="location.href='/sports'" >Sports</button>
+                <button type="button" class="categories-button" onClick="location.href='/general'" >General</button>
+                </div>
+            </div>
+        </div>
+
+    <h4 class="container-headlines">What's Happening Today</h4>
         <div class="news-container">
-            {% include 'jinja2/session.d' %}
-            {% include 'jinja2/get_articles.d' %}
+
+            <div class="top-headlines">
+                {% include 'jinja2/get_articles.d' %}
+            </div>
+
+            <h4>Health news</h4>
+            <div class="top-headlines">
+                {% include 'jinja2/get_articles.d' %}
         </div>
     </body>
 </html>

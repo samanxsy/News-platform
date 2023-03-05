@@ -1,5 +1,5 @@
-h2{
-    margin-top: 0;
+.title{
+    display: inline;
 }
 
 h3{
@@ -7,10 +7,27 @@ h3{
     margin-top: 0px;
 }
 
-
 h4{
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+.today-date{
+    display: inline;
+    margin-left: 155px;
+}
+
+.date{
+    display: inline;
+}
+
+.container-headlines{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.explore-headlines{
+    margin-left: 300px;
     margin-bottom: 5px;
 }
 
