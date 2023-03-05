@@ -15,12 +15,25 @@ def home():
     if search:
         search = search.replace(" ", "+")
 
+    # Top headlines
     url = f"https://newsapi.org/v2/everything?q={search}&apiKey={newsAPI_KEY}"
     data = requests.get(url)
     result = data.json()
     articles = result['articles']
 
-    return render_template("main.html", articles=articles)
+    # Tech news
+    url_tech = f"https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={newsAPI_KEY}"
+    data_tech = requests.get(url_tech)
+    result_tech = data_tech.json()
+    articles_tech = result_tech['articles']
+
+    # Health news
+    url_health = f"https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey={newsAPI_KEY}"
+    data_health = requests.get(url_health)
+    result_health = data_health.json()
+    articles_health = result_health['articles']
+
+    return render_template("home.html", articles=articles, articles_tech=articles_tech, articles_health=articles_health)
 
 
 @app.route("/search")
@@ -35,7 +48,7 @@ def search():
     result = data.json()
     articles = result['articles']
 
-    return render_template("main.html", articles=articles)
+    return render_template("common.html", articles=articles)
 
 
 @app.route("/health")
@@ -46,7 +59,7 @@ def health():
     result = data.json()
     articles = result['articles']
 
-    return render_template("main.html", articles=articles)
+    return render_template("common.html", articles=articles)
 
 
 @app.route('/technology', methods=["GET"])
@@ -57,7 +70,7 @@ def technology():
     result = data.json()
     articles = result['articles']
 
-    return render_template("main.html", articles=articles)
+    return render_template("common.html", articles=articles)
 
 
 @app.route("/business")
@@ -66,24 +79,12 @@ def business():
     This function will return top business headlines from US, UK and Hungary
     """
     # US Top business headlines
-    url_us = f"https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={newsAPI_KEY}"
-    data_us = requests.get(url_us)
-    result_us = data_us.json()
-    articles_us = result_us['articles']
+    url = f"https://newsapi.org/v2/top-headlines?country=&category=business&apiKey={newsAPI_KEY}"
+    data = requests.get(url)
+    result = data.json()
+    articles = result['articles']
 
-    # UK Top business headlines
-    url_uk = f"https://newsapi.org/v2/top-headlines?country=gb&category=business&apiKey={newsAPI_KEY}"
-    data_uk = requests.get(url_uk)
-    result_uk = data_uk.json()
-    articles_uk = result_uk['articles']
-
-    # HU Top business headlines
-    url_hu = f"https://newsapi.org/v2/top-headlines?country=hu&category=business&apiKey={newsAPI_KEY}"
-    data_hu = requests.get(url_hu)
-    result_hu = data_hu.json()
-    articles_hu = result_hu['articles']
-
-    return render_template("main.html", articles_us=articles_us, articles_uk=articles_uk, articles_hu=articles_hu)
+    return render_template("common.html", articles=articles)
 
 
 @app.route("/science")
@@ -94,7 +95,7 @@ def science():
     result = data.json()
     articles = result['articles']
 
-    return render_template("main.html", articles=articles)
+    return render_template("common.html", articles=articles)
 
 
 @app.route("/entertainment")
@@ -105,7 +106,7 @@ def entertainment():
     result = data.json()
     articles = result['articles']
 
-    return render_template("main.html", articles=articles)
+    return render_template("common.html", articles=articles)
 
 
 @app.route("/sports")
@@ -116,7 +117,7 @@ def sports():
     result = data.json()
     articles = result['articles']
 
-    return render_template("main.html", articles=articles)
+    return render_template("common.html", articles=articles)
 
 
 @app.route('/general')
@@ -127,7 +128,7 @@ def general():
     result = data.json()
     articles = result['articles']
 
-    return render_template("main.html", articles=articles)
+    return render_template("common.html", articles=articles)
 
 
 if __name__ == "__main__":

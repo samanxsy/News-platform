@@ -11,9 +11,9 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     text-align: left;
-    height: 300px;
-    width: auto;
+    height: 200px;
     min-width: 980px;
+    width: fit-content;
     overflow-y: scroll;
     word-wrap: break-word;
 }
@@ -29,7 +29,6 @@ body{
     text-align: left;
     height: 700px;
     overflow-y: scroll;
-    width: auto;
     word-wrap: break-word;
 }
 

@@ -31,6 +31,13 @@ h4{
     margin-bottom: 5px;
 }
 
+.read-all{
+    margin-left: 20px;
+    float: right;
+    display: inline;
+    text-align: end;
+}
+
 .authors{
     margin-top: 5px;
     margin-bottom: 3px;
