@@ -28,6 +28,7 @@ body{
     text-align: left;
     height: fit-content;
     word-wrap: break-word;
+    position: relative;
 }
 
 .news-header {
@@ -43,8 +44,10 @@ body{
 }
 
 .read-all {
-  align-self: flex-end;
-  margin-right: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-top: 8px;
 }
 
 form{

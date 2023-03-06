@@ -22,17 +22,14 @@ h4{
 }
 
 .container-headlines{
-    display: inline;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 8px;
 }
-
-.explore-headlines{
-    margin-left: 300px;
-    margin-bottom: 5px;
-}
-
 
 .authors{
-    margin-top: 5px;
+    margin-top: 30px;
     margin-bottom: 3px;
     font-family: Roboto;
     font-weight: 300;
