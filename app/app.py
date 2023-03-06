@@ -7,7 +7,6 @@ from flask_talisman import Talisman
 app = Flask("YourO News", static_folder='./app/static', template_folder='./app/templates')
 newsAPI_KEY = os.environ.get('newsAPI_KEY')
 app.secret_key = os.environ.get('SESSION_KEY')
-app.config['SESSION_COOKIE_NAME'] = 'my_session_cookie_name'
 
 csp = {
     'default-src': '\'self\'',

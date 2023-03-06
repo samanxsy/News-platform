@@ -19,8 +19,6 @@ class BaseTest(unittest.TestCase):
         self.app.add_url_rule('/entertainment', view_func=app.entertainment)
         self.app.add_url_rule('/sports', view_func=app.sports)
         self.app.add_url_rule('/general', view_func=app.general)
-        self.app.config['TESTING'] = True
-        self.app.config['SECRET_KEY'] = "MyTestSecretKey"
         self.app.secret_key = os.environ.get('SESSION_KEY')
 
 
