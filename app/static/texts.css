@@ -47,6 +47,7 @@ h4{
     font-weight: 500;
 }
 .space{
-    margin-top: 30px;
+    margin-top: 20px;
+    border-bottom: solid black 1px;
 }
 

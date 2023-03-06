@@ -17,6 +17,15 @@ body{
     word-wrap: break-word;
 }
 
+.news-container-common{
+  padding-top: 10px;
+  min-width: 980px;
+  margin-left: 50px;
+  display: inline-block;
+  text-align: left;
+  word-wrap: break-word;
+}
+
 .top-headlines{
     border-top: solid black 1px;
     padding-top: 10px;
