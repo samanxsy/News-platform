@@ -48,6 +48,9 @@ h4{
 }
 .space{
     margin-top: 20px;
-    border-bottom: solid black 1px;
 }
 
+.space_all{
+    margin-top: 20px;
+    border-bottom: solid black 1px;
+}
