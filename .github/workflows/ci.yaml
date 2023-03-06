@@ -13,6 +13,7 @@ jobs:
 
     env:
       newsAPI_KEY: ${{ secrets.newsAPI_KEY }}
+      app.secret_key: ${{ secrets.SESSION_KEY }}
 
     services:
       postgres:
@@ -40,6 +41,7 @@ jobs:
       - name: Run unit tests with pytest
         run: |
           export newsAPI_KEY=$newsAPI_KEY
+          export app.secret_key=$app.secret_key
           pytest
 
       - name: Lint with flake8
