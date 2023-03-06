@@ -13,9 +13,7 @@ body{
     grid-auto-rows: minmax(400px, auto);
     grid-gap: 20px;
     text-align: left;
-    height: 800px;
     width: 700px;
-    overflow-y: scroll;
     word-wrap: break-word;
 }
 
@@ -28,9 +26,7 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     text-align: left;
-    height: 400px;
-    min-width: 980px;
-    overflow-y: scroll;
+    height: fit-content;
     word-wrap: break-word;
 }
 
