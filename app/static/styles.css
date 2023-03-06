@@ -4,32 +4,51 @@ body{
     color: rgb(0, 0, 0);
 }
 
-.top-headlines{
-    border-top: solid black 1px;
+.news-container{
     padding-top: 10px;
-    display: inline-block;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: left;
-    height: 200px;
+    margin: 0 auto; 
     min-width: 980px;
-    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(400px, auto);
+    grid-gap: 20px;
+    text-align: left;
+    height: 800px;
+    width: 700px;
     overflow-y: scroll;
     word-wrap: break-word;
 }
 
-.news-container{
-    border-bottom: solid black 1px;
+.top-headlines{
+    border-top: solid black 1px;
     padding-top: 10px;
-    margin-left: 20px;
-    min-width: 980px;
-    display: inline-block;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
     flex-direction: row;
     flex-wrap: wrap;
     text-align: left;
-    height: 700px;
+    height: 400px;
+    min-width: 980px;
     overflow-y: scroll;
     word-wrap: break-word;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.read-all {
+  align-self: flex-end;
+  margin-right: 20px;
 }
 
 form{

@@ -16,24 +16,29 @@ def home():
         search = search.replace(" ", "+")
 
     # Top headlines
-    url = f"https://newsapi.org/v2/everything?q={search}&apiKey={newsAPI_KEY}"
+    url = f"https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey={newsAPI_KEY}"
     data = requests.get(url)
     result = data.json()
-    articles = result['articles']
+    articles = result['articles'][0:3]
 
     # Tech news
     url_tech = f"https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={newsAPI_KEY}"
     data_tech = requests.get(url_tech)
     result_tech = data_tech.json()
-    articles_tech = result_tech['articles']
+    articles_tech = result_tech['articles'][0:3]
+
+    url_business = f"https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={newsAPI_KEY}"
+    data_business = requests.get(url_business)
+    result_business = data_business.json()
+    articles_business = result_business['articles'][0:3]
 
     # Health news
     url_health = f"https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey={newsAPI_KEY}"
     data_health = requests.get(url_health)
     result_health = data_health.json()
-    articles_health = result_health['articles']
+    articles_health = result_health['articles'][0:3]
 
-    return render_template("home.html", articles=articles, articles_tech=articles_tech, articles_health=articles_health)
+    return render_template("home.html", articles=articles, articles_tech=articles_tech, articles_health=articles_health, articles_business=articles_business)
 
 
 @app.route("/search")

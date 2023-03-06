@@ -14,7 +14,7 @@ h4{
 
 .today-date{
     display: inline;
-    margin-left: 155px;
+    margin-left: 100px;
 }
 
 .date{
@@ -22,8 +22,7 @@ h4{
 }
 
 .container-headlines{
-    margin-left: 20px;
-    margin-bottom: 5px;
+    display: inline;
 }
 
 .explore-headlines{
@@ -31,12 +30,6 @@ h4{
     margin-bottom: 5px;
 }
 
-.read-all{
-    margin-left: 20px;
-    float: right;
-    display: inline;
-    text-align: end;
-}
 
 .authors{
     margin-top: 5px;

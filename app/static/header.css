@@ -1,6 +1,11 @@
 .header{
-    margin-bottom: 10px;
+    display: block;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin-bottom: 50px;
     min-width: 980px;
+    padding-bottom: 8px;
+    padding-top: 8px;
 }
 
 .search-section{
@@ -9,20 +14,20 @@
 }
 
 .categories-bar{
-    display: inline-block;
+    display: inline;
     margin-bottom: 20px;
     margin-right: 10px;
 }
 
 .categories-container{
-    display: inline-block;
+    display: inline;
     margin-top: 10px;
     margin-right: 30px;
-    margin-left: 300px;
+    margin-left: 30px;
 }
 
 .available-countries{
-    display: inline-block;
+    display: inline;
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
