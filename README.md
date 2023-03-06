@@ -6,7 +6,7 @@
 ## The application is currently being developed. . .
 
 ## News API
-In case you want to test the application in its early stage, amke sure to get your free API Key here:
+In case you want to test the application in its early stage, make sure to get your free API Key here:
 - https://newsapi.org/
 
 #### Author
