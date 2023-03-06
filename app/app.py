@@ -6,7 +6,8 @@ from flask_talisman import Talisman
 
 app = Flask("YourO News", static_folder='./app/static', template_folder='./app/templates')
 newsAPI_KEY = os.environ.get('newsAPI_KEY')
-app.config['SECRET_KEY'] = os.environ.get('SESSION_KEY')
+app.secret_key = os.environ.get('SESSION_KEY')
+app.config['SESSION_COOKIE_NAME'] = 'my_session_cookie_name'
 
 csp = {
     'default-src': '\'self\'',
@@ -27,9 +28,6 @@ talisman = Talisman(
 @app.route("/")
 def home():
     """This function will return the home page where the user can search about any topic"""
-    search = request.args.get('search')
-    if search:
-        search = search.replace(" ", "+")
 
     # Top headlines
     url = f"https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey={newsAPI_KEY}"
@@ -79,7 +77,7 @@ def health():
     if country is None and session.get('country') is None:
         country = "us"
     else:
-        country = session['country']
+        session['country'] = country
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=health&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -96,7 +94,7 @@ def technology():
     if country is None and session.get('country') is None:
         country = "us"
     else:
-        country = session['country']
+        session['country'] = country
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=technology&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -115,7 +113,7 @@ def business():
     if country is None and session.get('country') is None:
         country = "us"
     else:
-        country = session['country']
+        session['country'] = country
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=business&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -132,7 +130,7 @@ def science():
     if country is None and session.get('country') is None:
         country = "us"
     else:
-        country = session['country']
+        session['country'] = country
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=science&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -149,7 +147,7 @@ def entertainment():
     if country is None and session.get('country') is None:
         country = "us"
     else:
-        country = session['country']
+        session['country'] = country
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=entertainment&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -166,7 +164,7 @@ def sports():
     if country is None and session.get('country') is None:
         country = "us"
     else:
-        country = session['country']
+        session['country'] = country
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=sports&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -183,7 +181,7 @@ def general():
     if country is None and session.get('country') is None:
         country = "us"
     else:
-        country = session['country']
+        session['country'] = country
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=general&apiKey={newsAPI_KEY}"
     data = requests.get(url)
