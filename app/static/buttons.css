@@ -1,27 +1,48 @@
 .search-button{
-    height: 33px;
-    width: 40px;
+    height: 28px;
+    width: 28px;
     border: none;
-    margin-right: 70px;
-    margin-left: 5px;
-    font-weight: 400;
+    border-radius: 5px;
+    vertical-align: middle;
+    margin-right: 10px;
+    transition: 0.3s;
 }
 
-.country-button{
-    width: 30px;
-    height: 32px;
-    border: none;
-    width: 50px;
-    font-weight: 400;
+.search-button:hover{
+    background-color: rgb(206, 203, 203);
+    cursor: pointer;
 }
 
 .categories-button{
+    background-color: black;
+    color: white;
     margin-right: 2px;
     padding-right: 10px;
     padding-left: 10px;
     padding-top: 7px;
     padding-bottom: 7px;
     border: none;
-    border: solid black 1px;
+    border-radius: 3px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.categories-button:hover{
+    background-color: #e6e6e6;
+    color: black;
+    cursor: pointer;
+}
+
+.categories-button:active{
+    background-color: rgb(57, 77, 69);
+    color: white;
+}
+
+.countries{
+    background-color: black;
+    color: rgb(231, 195, 128);
+    font-family: Roboto;
     font-weight: 500;
+    border: none;
+    margin-right: 5px;
 }

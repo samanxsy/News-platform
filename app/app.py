@@ -1,27 +1,16 @@
 import os
 import requests
 from flask import Flask, render_template, request, session
-from flask_talisman import Talisman
+import app.common.countries as countries
 
 
 app = Flask("YourO News", static_folder='./app/static', template_folder='./app/templates')
 newsAPI_KEY = os.environ.get('newsAPI_KEY')
 app.secret_key = os.environ.get('SESSION_KEY')
 
-csp = {
-    'default-src': '\'self\'',
-    'img-src': '*'
-}
-
-talisman = Talisman(
-    app,
-    content_security_policy=csp,
-    force_https=False,  # True in production
-    strict_transport_security=True,
-    session_cookie_secure=True,
-    session_cookie_http_only=True,
-    frame_options='DENY'
-)
+DEFAULT_COUNTRY = "us"
+app.config["DEFAULT_COUNTRY"] = DEFAULT_COUNTRY
+countries = countries.countries
 
 
 @app.route("/")
@@ -72,28 +61,20 @@ def search():
 @app.route("/health")
 def health():
     """This function will return top health headlines"""
-    country = request.args.get('country')
-    if country is None and session.get('country') is None:
-        country = "us"
-    else:
-        session['country'] = country
+    country = session.get('country', DEFAULT_COUNTRY)
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=health&apiKey={newsAPI_KEY}"
     data = requests.get(url)
     result = data.json()
     articles = result['articles']
 
-    return render_template("common.html", articles=articles)
+    return render_template("common.html", articles=articles, countries=countries)
 
 
 @app.route('/technology', methods=["GET"])
 def technology():
     """This function will return top technology headlines"""
-    country = request.args.get('country')
-    if country is None and session.get('country') is None:
-        country = "us"
-    else:
-        session['country'] = country
+    country = session.get('country', DEFAULT_COUNTRY)
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=technology&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -108,11 +89,7 @@ def business():
     """
     This function will return top business headlines from US, UK and Hungary
     """
-    country = request.args.get('country')
-    if country is None and session.get('country') is None:
-        country = "us"
-    else:
-        session['country'] = country
+    country = session.get('country', DEFAULT_COUNTRY)
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=business&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -125,11 +102,7 @@ def business():
 @app.route("/science")
 def science():
     """This function will return top science headlines"""
-    country = request.args.get('country')
-    if country is None and session.get('country') is None:
-        country = "us"
-    else:
-        session['country'] = country
+    country = session.get('country', DEFAULT_COUNTRY)
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=science&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -142,11 +115,7 @@ def science():
 @app.route("/entertainment")
 def entertainment():
     """This function will return top entertainment headlines"""
-    country = request.args.get('country')
-    if country is None and session.get('country') is None:
-        country = "us"
-    else:
-        session['country'] = country
+    country = session.get('country', DEFAULT_COUNTRY)
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=entertainment&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -159,11 +128,7 @@ def entertainment():
 @app.route("/sports")
 def sports():
     """This function will return top sports headlines"""
-    country = request.args.get('country')
-    if country is None and session.get('country') is None:
-        country = "us"
-    else:
-        session['country'] = country
+    country = session.get('country', DEFAULT_COUNTRY)
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=sports&apiKey={newsAPI_KEY}"
     data = requests.get(url)
@@ -176,11 +141,7 @@ def sports():
 @app.route('/general')
 def general():
     """This function will return top general headlines"""
-    country = request.args.get('country')
-    if country is None and session.get('country') is None:
-        country = "us"
-    else:
-        session['country'] = country
+    country = session.get('country', DEFAULT_COUNTRY)
 
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category=general&apiKey={newsAPI_KEY}"
     data = requests.get(url)
