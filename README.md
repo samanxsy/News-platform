@@ -10,4 +10,4 @@ In case you want to test the application in its early stage, make sure to get yo
 - https://newsapi.org/
 
 #### Author
-- Samanxsy
+- Saman Saybani
