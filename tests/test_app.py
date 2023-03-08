@@ -22,7 +22,6 @@ class BaseTest(unittest.TestCase):
         self.app.secret_key = os.environ.get('SESSION_KEY')
 
 
-
 class TestRoutes(BaseTest):
     """This class is used for testing the routes responses"""
     def test_home(self):
